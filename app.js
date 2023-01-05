@@ -6,15 +6,15 @@ const blogRoutes = require("./routes/blogRoutes");
 // express app
 const app = express();
 
+const port = process.env.PORT;
 // connect to mongodb & listen for requests
-const dbURI =
-  "mongodb+srv://new_user9:T4UV93CZXHmYa0lg@blogpostnncluster.zslkro2.mongodb.net/?retryWrites=true&w=majority";
+const dbURI = process.env.DB_URL;
 
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
-    app.listen(3000, () => {
-      console.log("Server started on port 3000");
+    app.listen(port, () => {
+      console.log(`Server started on port ${port}`);
     });
   })
   .catch((err) => console.log(err));
